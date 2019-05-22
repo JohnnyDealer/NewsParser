@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 # soup = BeautifulSoup(html_doc, 'html.parser')
 # print(soup.prettify())
 url = 'http://mep.mosreg.ru/dokumenty/normotvorchestvo/'
-for i in range(1, 4):
+for i in range(1, 131):
     params = {'page': i}
     r = requests.get(url, params)
     soup = BeautifulSoup(r.text, 'html.parser')
