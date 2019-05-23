@@ -24,13 +24,12 @@ def second_page_info(my_anchors):
         new_anchors = new_soup.findAll("a", {"class": "doc-label doc-label--link list-bar__item"})
         new_divs = new_soup.findAll("div", {"class": "relation-list__value"})
         if len(my_anchors) == 1:
-            information['response'].insert(0,
-                {
+            dic = {
                     'title': str(new_headers[0].get_text()),
                     'link': str(new_anchors[0].get('href')),
                     'data': str(new_divs[-1].get_text()),
-                }
-            )
+                  }
+            information['response'].insert(0, dic)
         else:
             information['response'].append(
                 {
@@ -74,6 +73,7 @@ def find_new(static_date):
 url = 'http://mep.mosreg.ru/dokumenty/normotvorchestvo/'
 information = {}
 information['response'] = []
-anchors = get_anchors(4)
+anchors = get_anchors(2)
 second_page_info(anchors)
 find_new("19.05.2019")
+
