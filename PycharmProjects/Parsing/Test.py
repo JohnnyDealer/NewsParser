@@ -6,12 +6,14 @@ from bs4 import BeautifulSoup
 
 
 def get_anchors(page):
+    all_anchors = []
     for i in range(1, page):
         params = {'page': i}
         request = requests.get(url, params)
         soup = BeautifulSoup(request.text, 'html.parser')
         my_anchors = soup.findAll("a", {"class": "doc-label doc-label--link doc-block__doc-label"})
-        return my_anchors
+        all_anchors = all_anchors + my_anchors
+    return all_anchors
 
 
 def second_page_info(my_anchors):
